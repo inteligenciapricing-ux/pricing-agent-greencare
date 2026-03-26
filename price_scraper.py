@@ -1725,15 +1725,15 @@ def run():
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch(
-                headless=False,
-                args=[
-                    "--disable-blink-features=AutomationControlled",
-                    "--disable-dev-shm-usage",
-                    "--no-sandbox",
-                    "--disable-web-security",
-                    "--disable-features=IsolateOrigins,site-per-process"
-                ]
-            )
+    headless=True,
+    args=[
+        "--disable-blink-features=AutomationControlled",
+        "--disable-dev-shm-usage",
+        "--no-sandbox",
+        "--disable-web-security",
+        "--disable-features=IsolateOrigins,site-per-process"
+    ]
+)
 
             context = browser.new_context(
                 locale="pt-BR",
