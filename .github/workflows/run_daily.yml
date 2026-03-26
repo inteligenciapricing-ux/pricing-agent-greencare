@@ -26,5 +26,4 @@ jobs:
 
       - name: Run script
         run: |
-          cd scripts
-          python rodar_ciclo_completo.py
+          python scripts/rodar_ciclo_completo.py
