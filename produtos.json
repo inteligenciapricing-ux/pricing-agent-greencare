@@ -1,0 +1,74 @@
+[
+  {
+    "grupo_comparacao": "Canabidiol_23,75mg_10ml",
+    "empresa": "GreenCare Pharma",
+    "marca": "GreenCare",
+    "ean": "7898996084714",
+    "volume_ml": "10",
+    "concentracao_mg_ml": "23,75",
+    "total_mg": "237,5",
+    "tipo_produto": "CBD_ISOLADO",
+    "produto_busca": "Canabidiol 23,75mg/ml 10ml GreenCare",
+    "palavras_busca_raw": "canabidiol greenCare 23,75mg  10m   canabidiol 23,75mg/Ml greencare 10ml   canabidiol 23,75mg/ml solução oral 10ml greencare   canabidiol greencare 23,75mg/ml solução oral 10ml + conta-gotas"
+  },
+  {
+    "grupo_comparacao": "Canabidiol_23,75mg_10ml",
+    "empresa": "Mantecorp Farmasa",
+    "marca": "Mantecorp",
+    "ean": "7896714292311",
+    "volume_ml": "10",
+    "concentracao_mg_ml": "23,75",
+    "total_mg": "237,5",
+    "tipo_produto": "CBD_ISOLADO",
+    "produto_busca": "Canabidiol 23,75mg/ml 10ml Mantecorp",
+    "palavras_busca_raw": "canabidiol mantecorp 23,75mg 10ml   canabidiol 23,75mg/ml mantecorp   cannabidiol 23,75 mg/ml mantecorp farmasa   canabidiol 23,75 mg/ml solução gotas 10ml mantecorp"
+  },
+  {
+    "grupo_comparacao": "Extrato_de_Cannabis_Sativa_79,14mg_30ml",
+    "empresa": "GreenCare Pharma",
+    "marca": "GreenCare",
+    "ean": "7898996084707",
+    "volume_ml": "30",
+    "concentracao_mg_ml": "79,14",
+    "total_mg": "2374,2",
+    "tipo_produto": "EXTRATO_CANNABIS",
+    "produto_busca": "Extrato de Cannabis Sativa 79,14mg/ml 30ml GreenCare",
+    "palavras_busca_raw": "extrato de cannabis sativa  greenCare 79,14mg 30ml  extrato de cannabis 79,14mg/Ml  greenCare 30ml  extrato de cannabis sativa 79,14mg/ml solução oral 30ml greencare   extrato de cannabis sativa 79,14mg/ml solução oral 30ml greencare"
+  },
+  {
+    "grupo_comparacao": "Extrato_de_Cannabis_Sativa_79,14mg_30ml",
+    "empresa": "Mantecorp Farmasa",
+    "marca": "Mantecorp",
+    "ean": "7891142982513",
+    "volume_ml": "30",
+    "concentracao_mg_ml": "79,14",
+    "total_mg": "2374,2",
+    "tipo_produto": "EXTRATO_CANNABIS",
+    "produto_busca": "Extrato de Cannabis Sativa 79,14mg/ml 30ml Mantecorp",
+    "palavras_busca_raw": "extrato de cannabis sativa  mantecorp 79,14mg 30ml   extrato de cannabis 79,14mg/ml  mantecorp 30ml   extrato de cannabis sativa 79,14mg/ml solução oral 30ml  mantecorp   extrato de cannabis sativa mantecorp farmasa 79,14mg/ml solução gotas oral 30ml+conta gotas graduado"
+  },
+  {
+    "grupo_comparacao": "Extrato_de_Cannabis_Sativa_160,32mg_10ml",
+    "empresa": "GreenCare Pharma",
+    "marca": "GreenCare",
+    "ean": "7898996084721",
+    "volume_ml": "10",
+    "concentracao_mg_ml": "160,32",
+    "total_mg": "1603,2",
+    "tipo_produto": "EXTRATO_CANNABIS",
+    "produto_busca": "Extrato de Cannabis Sativa 160,32mg/ml 10ml GreenCare",
+    "palavras_busca_raw": "extrato de cannabis sativa greencare 160,32mg 10ml  extrato de cannabis 160,32mg/Ml greenCare 10ml   extrato de cannabis sativa 160,32mg/ml solução oral 10ml greencare   extrato de cannabis sativa GreenCare 160,32mg/ml solução oral 10ml"
+  },
+  {
+    "grupo_comparacao": "Extrato_de_Cannabis_Sativa_160,32mg_10ml",
+    "empresa": "Mantecorp Farmasa",
+    "marca": "Mantecorp",
+    "ean": "7896714292304",
+    "volume_ml": "10",
+    "concentracao_mg_ml": "160,32",
+    "total_mg": "1603,2",
+    "tipo_produto": "EXTRATO_CANNABIS",
+    "produto_busca": "Extrato de Cannabis Sativa 160,32mg/ml 10ml Mantecorp",
+    "palavras_busca_raw": "extrato de cannabis sativa  mantecorp 160,32mg 10ml    extrato de cannabis 160,32mg/ml mantecorp 10ml solução gotas + conta-gotas graduado    extrato de cannabis sativa 160,32mg/ml solução oral 10ml   extrato de cannabis sativa mantecorp farmasa 160,32mg/ml solução gotas 10ml + conta-gotas mantecorp"
+  }
+]

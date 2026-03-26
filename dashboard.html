@@ -1,0 +1,795 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Executivo de Pricing</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #0b1220;
+            --bg-soft: #111827;
+            --card: rgba(255,255,255,0.06);
+            --card-strong: rgba(255,255,255,0.10);
+            --line: rgba(255,255,255,0.10);
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #0f766e;
+            --accent-2: #14b8a6;
+            --shadow: 0 20px 40px rgba(0,0,0,0.28);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(20,184,166,0.12), transparent 25%),
+                radial-gradient(circle at top right, rgba(59,130,246,0.10), transparent 20%),
+                linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 28px;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            padding: 28px 32px;
+            background: linear-gradient(135deg, #064e3b 0%, #0f766e 45%, #0f172a 100%);
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .hero h1 {
+            margin: 0 0 8px 0;
+            font-size: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            margin: 0;
+            color: rgba(255,255,255,0.85);
+            font-size: 16px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .hero-badge {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.10);
+            color: white;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.10);
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .kpi-title {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .kpi-sub {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .grid-2-equal {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .panel {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            padding: 22px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+        }
+
+        .panel h2 {
+            margin: 0 0 16px 0;
+            font-size: 22px;
+            letter-spacing: -0.02em;
+        }
+
+        .panel p.small {
+            margin: -8px 0 16px 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: 340px !important;
+        }
+
+        .insights ul, .bullets ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .insights li, .bullets li {
+            margin-bottom: 12px;
+            line-height: 1.5;
+            color: var(--text);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 10px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        th {
+            color: #cbd5e1;
+            font-weight: 700;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .badge {
+            display: inline-block;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 16px;
+        }
+
+        .heatmap-table th, .heatmap-table td {
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .sticky-col {
+            position: sticky;
+            left: 0;
+            background: #111827;
+            z-index: 2;
+        }
+
+        .footer {
+            color: var(--muted);
+            font-size: 12px;
+            padding: 8px 4px 20px 4px;
+        }
+
+        @media (max-width: 1080px) {
+            .grid-2, .grid-2-equal {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="hero">
+            <h1>Dashboard Executivo de Pricing</h1>
+            <p>GreenCare vs Mantecorp | visão executiva com criticidade ponderada, heatmap e ação sugerida</p>
+
+            <div class="hero-badges">
+                <div class="hero-badge">Estratégia: híbrida</div>
+                <div class="hero-badge">Ajuste máximo por ciclo: 5%</div>
+                <div class="hero-badge">Prioridade: rede + SKU ponderados</div>
+                <div class="hero-badge">Score executivo: 3.1</div>
+                <div class="hero-badge">Leitura: Crítico</div>
+            </div>
+        </div>
+
+        <div class="kpi-grid">
+            
+        <div class="kpi-card">
+            <div class="kpi-title">Score Executivo</div>
+            <div class="kpi-value">3.1</div>
+            <div class="kpi-sub">Crítico</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Prêmio médio GreenCare</div>
+            <div class="kpi-value">10.17%</div>
+            <div class="kpi-sub">Média do ciclo</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Maior premium</div>
+            <div class="kpi-value">17.30%</div>
+            <div class="kpi-sub">Pico observado</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Menor premium</div>
+            <div class="kpi-value">-1.82%</div>
+            <div class="kpi-sub">Menor relação</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Comparações</div>
+            <div class="kpi-value">15</div>
+            <div class="kpi-sub">Itens comparados</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Críticos</div>
+            <div class="kpi-value">9</div>
+            <div class="kpi-sub">Faixa &gt; 10%</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Alertas</div>
+            <div class="kpi-value">0</div>
+            <div class="kpi-sub">Faixa 7% a 10%</div>
+        </div>
+        
+
+        <div class="kpi-card">
+            <div class="kpi-title">Abaixo da Mantecorp</div>
+            <div class="kpi-value">1</div>
+            <div class="kpi-sub">Oportunidade / subpreço</div>
+        </div>
+        
+        </div>
+
+        <div class="grid-2">
+            <div class="panel">
+                <h2>Preço médio por SKU</h2>
+                <p class="small">Comparação média GreenCare vs Mantecorp por SKU monitorado</p>
+                <canvas id="graficoSku"></canvas>
+            </div>
+
+            <div class="panel">
+                <h2>Distribuição de status competitivos</h2>
+                <p class="small">Participação do portfólio nas faixas definidas de pricing</p>
+                <canvas id="graficoStatus"></canvas>
+            </div>
+        </div>
+
+        <div class="grid-2-equal">
+            <div class="panel">
+                <h2>Ranking de criticidade por rede</h2>
+                <p class="small">Score ponderado considerando rede, SKU e gravidade do prêmio</p>
+                <canvas id="graficoRede"></canvas>
+            </div>
+
+            <div class="panel insights">
+                <h2>Leitura executiva automática</h2>
+                <ul>
+                    <li>A GreenCare encerra o ciclo com prêmio médio de 10.17%, acima da faixa crítica definida.</li><li>A rede mais crítica no recorte atual é PagueMenos, com premium médio de 14.23% e score ponderado de 47.16.</li><li>O SKU de maior peso estratégico no modelo é EXTRATO_CANNABIS_79,14mg_30ml, o que exige disciplina adicional na leitura de preço.</li><li>O principal foco de ação do ciclo é PagueMenos no SKU EXTRATO_CANNABIS_79,14mg_30ml, onde a recomendação é: reduzir preço em 5.0%.</li><li>A principal oportunidade está em Panvel no SKU EXTRATO_CANNABIS_160,32mg_10ml, onde GreenCare está abaixo da Mantecorp em -1.82%.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:24px;">
+            <h2>Heatmap Rede × SKU</h2>
+            <p class="small">Leitura visual direta do posicionamento competitivo por rede e SKU</p>
+            
+    <div class="table-wrap">
+        <table class="heatmap-table">
+            <thead>
+                <tr>
+                    <th class="sticky-col">Rede</th>
+                    <th>CBD_ISOLADO_23,75mg_10ml</th><th>EXTRATO_CANNABIS_160,32mg_10ml</th><th>EXTRATO_CANNABIS_79,14mg_30ml</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class='sticky-col'><b>DrogaRaia</b></td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#65a30d; color:white;'>ACEITAVEL</td></tr><tr><td class='sticky-col'><b>DrogariaSaoPaulo</b></td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#65a30d; color:white;'>ACEITAVEL</td></tr><tr><td class='sticky-col'><b>Drogasil</b></td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#65a30d; color:white;'>ACEITAVEL</td></tr><tr><td class='sticky-col'><b>PagueMenos</b></td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#dc2626; color:white;'>CRITICO</td><td style='background:#dc2626; color:white;'>CRITICO</td></tr><tr><td class='sticky-col'><b>Panvel</b></td><td style='background:#65a30d; color:white;'>ACEITAVEL</td><td style='background:#2563eb; color:white;'>ABAIXO_MANTECORP</td><td style='background:#65a30d; color:white;'>ACEITAVEL</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+        </div>
+
+        <div class="grid-2-equal">
+            <div class="panel bullets">
+                <h2>Top problemas</h2>
+                <ul>
+                    <li><b>PagueMenos</b> | EXTRATO_CANNABIS_79,14mg_30ml | 15.90% | ação: Reduzir preço em 5.0%</li>
+<li><b>DrogariaSaoPaulo</b> | EXTRATO_CANNABIS_160,32mg_10ml | 11.64% | ação: Reduzir preço em 4.6%</li>
+<li><b>DrogariaSaoPaulo</b> | CBD_ISOLADO_23,75mg_10ml | 17.30% | ação: Reduzir preço em 5.0%</li>
+<li><b>DrogaRaia</b> | EXTRATO_CANNABIS_160,32mg_10ml | 11.63% | ação: Reduzir preço em 4.6%</li>
+<li><b>Drogasil</b> | EXTRATO_CANNABIS_160,32mg_10ml | 11.63% | ação: Reduzir preço em 4.6%</li>
+                </ul>
+            </div>
+
+            <div class="panel bullets">
+                <h2>Top oportunidades</h2>
+                <ul>
+                    <li><b>Panvel</b> | EXTRATO_CANNABIS_160,32mg_10ml | -1.82% | ação: Elevar preço em 1.3%</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="panel" style="margin-bottom:24px;">
+            <h2>Ranking executivo de redes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Rede</th>
+                        <th>Premium médio</th>
+                        <th>Críticos</th>
+                        <th>Alertas</th>
+                        <th>Score de criticidade</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td>1</td>
+            <td>PagueMenos</td>
+            <td>14.23%</td>
+            <td>3</td>
+            <td>0</td>
+            <td>47.16</td>
+        </tr>
+        
+
+        <tr>
+            <td>2</td>
+            <td>DrogariaSaoPaulo</td>
+            <td>11.81%</td>
+            <td>2</td>
+            <td>0</td>
+            <td>44.60</td>
+        </tr>
+        
+
+        <tr>
+            <td>3</td>
+            <td>DrogaRaia</td>
+            <td>11.09%</td>
+            <td>2</td>
+            <td>0</td>
+            <td>37.28</td>
+        </tr>
+        
+
+        <tr>
+            <td>4</td>
+            <td>Drogasil</td>
+            <td>11.09%</td>
+            <td>2</td>
+            <td>0</td>
+            <td>37.28</td>
+        </tr>
+        
+
+        <tr>
+            <td>5</td>
+            <td>Panvel</td>
+            <td>2.62%</td>
+            <td>0</td>
+            <td>0</td>
+            <td>17.59</td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+
+        <div class="panel" style="margin-bottom:24px;">
+            <h2>Tabela detalhada com ação sugerida</h2>
+            <p class="small">Base operacional para decisão e priorização tática</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rede</th>
+                            <th>SKU</th>
+                            <th>GreenCare</th>
+                            <th>Mantecorp</th>
+                            <th>Delta</th>
+                            <th>Premium</th>
+                            <th>Status</th>
+                            <th>Ação sugerida</th>
+                            <th>Prioridade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td>DrogaRaia</td>
+            <td>CBD_ISOLADO_23,75mg_10ml</td>
+            <td>R$ 149,60</td>
+            <td>R$ 129,90</td>
+            <td>R$ 19,70</td>
+            <td>15.17%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 5.0%</td>
+            <td>13.32</td>
+        </tr>
+        
+
+        <tr>
+            <td>DrogaRaia</td>
+            <td>EXTRATO_CANNABIS_160,32mg_10ml</td>
+            <td>R$ 424,08</td>
+            <td>R$ 379,90</td>
+            <td>R$ 44,18</td>
+            <td>11.63%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 4.6%</td>
+            <td>14.66</td>
+        </tr>
+        
+
+        <tr>
+            <td>DrogaRaia</td>
+            <td>EXTRATO_CANNABIS_79,14mg_30ml</td>
+            <td>R$ 741,75</td>
+            <td>R$ 696,60</td>
+            <td>R$ 45,15</td>
+            <td>6.48%</td>
+            <td><span class="badge" style="background:#65a30d;">ACEITAVEL</span></td>
+            <td>Sustentar e monitorar</td>
+            <td>9.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>DrogariaSaoPaulo</td>
+            <td>CBD_ISOLADO_23,75mg_10ml</td>
+            <td>R$ 149,60</td>
+            <td>R$ 127,54</td>
+            <td>R$ 22,06</td>
+            <td>17.30%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 5.0%</td>
+            <td>15.57</td>
+        </tr>
+        
+
+        <tr>
+            <td>DrogariaSaoPaulo</td>
+            <td>EXTRATO_CANNABIS_160,32mg_10ml</td>
+            <td>R$ 424,08</td>
+            <td>R$ 379,87</td>
+            <td>R$ 44,21</td>
+            <td>11.64%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 4.6%</td>
+            <td>17.41</td>
+        </tr>
+        
+
+        <tr>
+            <td>DrogariaSaoPaulo</td>
+            <td>EXTRATO_CANNABIS_79,14mg_30ml</td>
+            <td>R$ 741,75</td>
+            <td>R$ 696,60</td>
+            <td>R$ 45,15</td>
+            <td>6.48%</td>
+            <td><span class="badge" style="background:#65a30d;">ACEITAVEL</span></td>
+            <td>Sustentar e monitorar</td>
+            <td>11.62</td>
+        </tr>
+        
+
+        <tr>
+            <td>Drogasil</td>
+            <td>CBD_ISOLADO_23,75mg_10ml</td>
+            <td>R$ 149,60</td>
+            <td>R$ 129,90</td>
+            <td>R$ 19,70</td>
+            <td>15.17%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 5.0%</td>
+            <td>13.32</td>
+        </tr>
+        
+
+        <tr>
+            <td>Drogasil</td>
+            <td>EXTRATO_CANNABIS_160,32mg_10ml</td>
+            <td>R$ 424,08</td>
+            <td>R$ 379,90</td>
+            <td>R$ 44,18</td>
+            <td>11.63%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 4.6%</td>
+            <td>14.66</td>
+        </tr>
+        
+
+        <tr>
+            <td>Drogasil</td>
+            <td>EXTRATO_CANNABIS_79,14mg_30ml</td>
+            <td>R$ 741,75</td>
+            <td>R$ 696,60</td>
+            <td>R$ 45,15</td>
+            <td>6.48%</td>
+            <td><span class="badge" style="background:#65a30d;">ACEITAVEL</span></td>
+            <td>Sustentar e monitorar</td>
+            <td>9.30</td>
+        </tr>
+        
+
+        <tr>
+            <td>PagueMenos</td>
+            <td>CBD_ISOLADO_23,75mg_10ml</td>
+            <td>R$ 149,60</td>
+            <td>R$ 129,90</td>
+            <td>R$ 19,70</td>
+            <td>15.17%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 5.0%</td>
+            <td>13.32</td>
+        </tr>
+        
+
+        <tr>
+            <td>PagueMenos</td>
+            <td>EXTRATO_CANNABIS_160,32mg_10ml</td>
+            <td>R$ 424,08</td>
+            <td>R$ 379,90</td>
+            <td>R$ 44,18</td>
+            <td>11.63%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 4.6%</td>
+            <td>14.66</td>
+        </tr>
+        
+
+        <tr>
+            <td>PagueMenos</td>
+            <td>EXTRATO_CANNABIS_79,14mg_30ml</td>
+            <td>R$ 741,75</td>
+            <td>R$ 640,00</td>
+            <td>R$ 101,75</td>
+            <td>15.90%</td>
+            <td><span class="badge" style="background:#dc2626;">CRITICO</span></td>
+            <td>Reduzir preço em 5.0%</td>
+            <td>19.18</td>
+        </tr>
+        
+
+        <tr>
+            <td>Panvel</td>
+            <td>CBD_ISOLADO_23,75mg_10ml</td>
+            <td>R$ 187,00</td>
+            <td>R$ 181,18</td>
+            <td>R$ 5,82</td>
+            <td>3.21%</td>
+            <td><span class="badge" style="background:#65a30d;">ACEITAVEL</span></td>
+            <td>Sustentar e monitorar</td>
+            <td>5.18</td>
+        </tr>
+        
+
+        <tr>
+            <td>Panvel</td>
+            <td>EXTRATO_CANNABIS_160,32mg_10ml</td>
+            <td>R$ 589,00</td>
+            <td>R$ 599,92</td>
+            <td>R$ -10,92</td>
+            <td>-1.82%</td>
+            <td><span class="badge" style="background:#2563eb;">ABAIXO_MANTECORP</span></td>
+            <td>Elevar preço em 1.3%</td>
+            <td>5.44</td>
+        </tr>
+        
+
+        <tr>
+            <td>Panvel</td>
+            <td>EXTRATO_CANNABIS_79,14mg_30ml</td>
+            <td>R$ 989,00</td>
+            <td>R$ 928,80</td>
+            <td>R$ 60,20</td>
+            <td>6.48%</td>
+            <td><span class="badge" style="background:#65a30d;">ACEITAVEL</span></td>
+            <td>Sustentar e monitorar</td>
+            <td>6.97</td>
+        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="footer">
+            Dashboard V3 gerado automaticamente a partir de outputs/comparativo_precos.csv
+        </div>
+    </div>
+
+    <script>
+        const labelsSku = ["EXTRATO_CANNABIS_79,14mg_30ml", "EXTRATO_CANNABIS_160,32mg_10ml", "CBD_ISOLADO_23,75mg_10ml"];
+        const greenSku = [791.2, 457.06, 157.08];
+        const mtSku = [731.72, 423.9, 139.68];
+        const premiumSku = [8.36, 8.94, 13.2];
+
+        const labelsStatus = ["ALINHADO", "ACEITAVEL", "ALERTA", "CRITICO", "ABAIXO_MANTECORP"];
+        const valoresStatus = [0, 5, 0, 9, 1];
+
+        const labelsRede = ["PagueMenos", "DrogariaSaoPaulo", "DrogaRaia", "Drogasil", "Panvel"];
+        const criticidadeRede = [47.16, 44.6, 37.28, 37.28, 17.59];
+        const premiumRede = [14.23, 11.81, 11.09, 11.09, 2.62];
+
+        const axisColor = 'rgba(255,255,255,0.12)';
+        const tickColor = '#cbd5e1';
+
+        new Chart(document.getElementById('graficoSku'), {
+            type: 'bar',
+            data: {
+                labels: labelsSku,
+                datasets: [
+                    {
+                        label: 'GreenCare',
+                        data: greenSku,
+                        backgroundColor: 'rgba(20,184,166,0.75)',
+                        borderColor: 'rgba(20,184,166,1)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    },
+                    {
+                        label: 'Mantecorp',
+                        data: mtSku,
+                        backgroundColor: 'rgba(244,114,182,0.75)',
+                        borderColor: 'rgba(244,114,182,1)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: tickColor }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: tickColor },
+                        grid: { color: axisColor }
+                    },
+                    y: {
+                        ticks: { color: tickColor },
+                        grid: { color: axisColor }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('graficoStatus'), {
+            type: 'doughnut',
+            data: {
+                labels: labelsStatus,
+                datasets: [
+                    {
+                        data: valoresStatus,
+                        backgroundColor: [
+                            '#15803d',
+                            '#65a30d',
+                            '#f59e0b',
+                            '#dc2626',
+                            '#2563eb'
+                        ],
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: tickColor }
+                    }
+                }
+            }
+        });
+
+        new Chart(document.getElementById('graficoRede'), {
+            type: 'bar',
+            data: {
+                labels: labelsRede,
+                datasets: [
+                    {
+                        label: 'Score de criticidade',
+                        data: criticidadeRede,
+                        backgroundColor: 'rgba(59,130,246,0.75)',
+                        borderColor: 'rgba(59,130,246,1)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    },
+                    {
+                        label: 'Premium médio (%)',
+                        data: premiumRede,
+                        backgroundColor: 'rgba(239,68,68,0.70)',
+                        borderColor: 'rgba(239,68,68,1)',
+                        borderWidth: 1,
+                        borderRadius: 8
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: tickColor }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: tickColor },
+                        grid: { color: axisColor }
+                    },
+                    y: {
+                        ticks: { color: tickColor },
+                        grid: { color: axisColor }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

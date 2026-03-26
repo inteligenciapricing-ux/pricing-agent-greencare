@@ -1,0 +1,253 @@
+========================================================================================
+INTELIGÊNCIA DE PRICING – GREENCARE VS MANTECORP
+========================================================================================
+
+SKU: CBD_ISOLADO_23,75mg_10ml
+Rede: DrogaRaia
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 129.90
+GreenCare: R$ 149.60
+
+Mais barato: Mantecorp - R$ 129.90
+Mais caro: GreenCare - R$ 149.60
+Diferença absoluta: R$ 19.70
+Diferença percentual: 15.17%
+
+Prêmio GreenCare: 15.17%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_160,32mg_10ml
+Rede: DrogaRaia
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 379.90
+GreenCare: R$ 424.08
+
+Mais barato: Mantecorp - R$ 379.90
+Mais caro: GreenCare - R$ 424.08
+Diferença absoluta: R$ 44.18
+Diferença percentual: 11.63%
+
+Prêmio GreenCare: 11.63%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_79,14mg_30ml
+Rede: DrogaRaia
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 696.60
+GreenCare: R$ 741.75
+
+Mais barato: Mantecorp - R$ 696.60
+Mais caro: GreenCare - R$ 741.75
+Diferença absoluta: R$ 45.15
+Diferença percentual: 6.48%
+
+Prêmio GreenCare: 6.48%
+Status competitivo: ACEITAVEL
+--------------------------------------------------------------------------------
+
+SKU: CBD_ISOLADO_23,75mg_10ml
+Rede: DrogariaSaoPaulo
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 127.54
+GreenCare: R$ 149.60
+
+Mais barato: Mantecorp - R$ 127.54
+Mais caro: GreenCare - R$ 149.60
+Diferença absoluta: R$ 22.06
+Diferença percentual: 17.30%
+
+Prêmio GreenCare: 17.30%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_160,32mg_10ml
+Rede: DrogariaSaoPaulo
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 379.87
+GreenCare: R$ 424.08
+
+Mais barato: Mantecorp - R$ 379.87
+Mais caro: GreenCare - R$ 424.08
+Diferença absoluta: R$ 44.21
+Diferença percentual: 11.64%
+
+Prêmio GreenCare: 11.64%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_79,14mg_30ml
+Rede: DrogariaSaoPaulo
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 696.60
+GreenCare: R$ 741.75
+
+Mais barato: Mantecorp - R$ 696.60
+Mais caro: GreenCare - R$ 741.75
+Diferença absoluta: R$ 45.15
+Diferença percentual: 6.48%
+
+Prêmio GreenCare: 6.48%
+Status competitivo: ACEITAVEL
+--------------------------------------------------------------------------------
+
+SKU: CBD_ISOLADO_23,75mg_10ml
+Rede: Drogasil
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 129.90
+GreenCare: R$ 149.60
+
+Mais barato: Mantecorp - R$ 129.90
+Mais caro: GreenCare - R$ 149.60
+Diferença absoluta: R$ 19.70
+Diferença percentual: 15.17%
+
+Prêmio GreenCare: 15.17%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_160,32mg_10ml
+Rede: Drogasil
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 379.90
+GreenCare: R$ 424.08
+
+Mais barato: Mantecorp - R$ 379.90
+Mais caro: GreenCare - R$ 424.08
+Diferença absoluta: R$ 44.18
+Diferença percentual: 11.63%
+
+Prêmio GreenCare: 11.63%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_79,14mg_30ml
+Rede: Drogasil
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 696.60
+GreenCare: R$ 741.75
+
+Mais barato: Mantecorp - R$ 696.60
+Mais caro: GreenCare - R$ 741.75
+Diferença absoluta: R$ 45.15
+Diferença percentual: 6.48%
+
+Prêmio GreenCare: 6.48%
+Status competitivo: ACEITAVEL
+--------------------------------------------------------------------------------
+
+SKU: CBD_ISOLADO_23,75mg_10ml
+Rede: PagueMenos
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 129.90
+GreenCare: R$ 149.60
+
+Mais barato: Mantecorp - R$ 129.90
+Mais caro: GreenCare - R$ 149.60
+Diferença absoluta: R$ 19.70
+Diferença percentual: 15.17%
+
+Prêmio GreenCare: 15.17%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_160,32mg_10ml
+Rede: PagueMenos
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 379.90
+GreenCare: R$ 424.08
+
+Mais barato: Mantecorp - R$ 379.90
+Mais caro: GreenCare - R$ 424.08
+Diferença absoluta: R$ 44.18
+Diferença percentual: 11.63%
+
+Prêmio GreenCare: 11.63%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_79,14mg_30ml
+Rede: PagueMenos
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 640.00
+GreenCare: R$ 741.75
+
+Mais barato: Mantecorp - R$ 640.00
+Mais caro: GreenCare - R$ 741.75
+Diferença absoluta: R$ 101.75
+Diferença percentual: 15.90%
+
+Prêmio GreenCare: 15.90%
+Status competitivo: CRITICO
+--------------------------------------------------------------------------------
+
+SKU: CBD_ISOLADO_23,75mg_10ml
+Rede: Panvel
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 181.18
+GreenCare: R$ 187.00
+
+Mais barato: Mantecorp - R$ 181.18
+Mais caro: GreenCare - R$ 187.00
+Diferença absoluta: R$ 5.82
+Diferença percentual: 3.21%
+
+Prêmio GreenCare: 3.21%
+Status competitivo: ACEITAVEL
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_160,32mg_10ml
+Rede: Panvel
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 599.92
+GreenCare: R$ 589.00
+
+Mais barato: GreenCare - R$ 589.00
+Mais caro: Mantecorp - R$ 599.92
+Diferença absoluta: R$ -10.92
+Diferença percentual: -1.82%
+
+Prêmio GreenCare: -1.82%
+Status competitivo: ABAIXO_MANTECORP
+--------------------------------------------------------------------------------
+
+SKU: EXTRATO_CANNABIS_79,14mg_30ml
+Rede: Panvel
+--------------------------------------------------------------------------------
+
+Mantecorp: R$ 928.80
+GreenCare: R$ 989.00
+
+Mais barato: Mantecorp - R$ 928.80
+Mais caro: GreenCare - R$ 989.00
+Diferença absoluta: R$ 60.20
+Diferença percentual: 6.48%
+
+Prêmio GreenCare: 6.48%
+Status competitivo: ACEITAVEL
+--------------------------------------------------------------------------------
+
+========================================================================================
+RESUMO ESTRATÉGICO DO PORTFÓLIO
+========================================================================================
+Prêmio médio GreenCare: 10.17%
+Maior prêmio observado: 17.30%
+Menor prêmio observado: -1.82%
+
+GreenCare está posicionada como marca premium frente à Mantecorp.
+========================================================================================

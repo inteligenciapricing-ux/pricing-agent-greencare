@@ -1,0 +1,34 @@
+[
+  {
+    "nome": "Drogasil",
+    "url_base": "https://www.drogasil.com.br"
+  },
+  {
+    "nome": "DrogaRaia",
+    "url_base": "https://www.drogaraia.com.br"
+  },
+  {
+    "nome": "DrogariaSaoPaulo",
+    "url_base": "https://www.drogariasaopaulo.com.br"
+  },
+  {
+    "nome": "DrogariaPacheco",
+    "url_base": "https://www.drogariapacheco.com.br"
+  },
+  {
+    "nome": "Panvel",
+    "url_base": "https://www.panvel.com"
+  },
+  {
+    "nome": "PagueMenos",
+    "url_base": "https://www.paguemenos.com.br"
+  },
+  {
+    "nome": "Venancio",
+    "url_base": "https://www.drogariavenancio.com.br"
+  },
+  {
+    "nome": "Araujo",
+    "url_base": "https://www.araujo.com.br"
+  }
+]
