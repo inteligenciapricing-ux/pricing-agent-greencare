@@ -34,6 +34,7 @@ def rodar_comando(descricao, comando):
 
 
 def run():
+    print("🔥 TESTE INICIOU", flush=True)
     print("\n🚀 INICIANDO CICLO COMPLETO\n", flush=True)
 
     # 1. COLETA DE PREÇOS
