@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install requests pandas matplotlib playwright
-          playwright install
+          python -m playwright install --with-deps
 
       - name: Run script
         run: |
