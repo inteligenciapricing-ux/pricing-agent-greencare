@@ -39,13 +39,13 @@ def run():
     # 1. COLETA DE PREÇOS
     rodar_comando(
         "COLETA DE PREÇOS",
-        [sys.executable, "-u", "scripts/price_scraper.py"]
+        [sys.executable, "-u", "price_scraper.py"]
     )
 
     # 2. ENVIO DO DASHBOARD (NOVO - CORRIGIDO)
     rodar_comando(
         "ENVIO DE RELATÓRIO",
-        [sys.executable, "-u", "scripts/enviar_dashboard_email.py"]
+        [sys.executable, "-u", "enviar_dashboard_email.py"]
     )
 
     print(
