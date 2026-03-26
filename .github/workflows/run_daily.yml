@@ -21,7 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install requests pandas matplotlib
+          pip install requests pandas matplotlib playwright
+          playwright install
 
       - name: Run script
         run: |
