@@ -1,0 +1,28 @@
+name: Run Pricing Agent Daily
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 09:00 Brasil (UTC-3)
+  workflow_dispatch:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install requests pandas matplotlib
+
+      - name: Run script
+        run: |
+          cd scripts
+          python rodar_ciclo_completo.py
