@@ -1,3 +1,4 @@
+
 name: Run Pricing Agent Daily
 
 on:
@@ -24,4 +25,5 @@ jobs:
 
       - name: Run script
         run: |
-          python scripts/rodar_ciclo_completo.py
+          cd scripts
+          python rodar_ciclo_completo.py
