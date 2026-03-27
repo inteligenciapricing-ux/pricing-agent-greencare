@@ -1725,7 +1725,7 @@ def run():
     try:
         with sync_playwright() as p:
             browser = p.chromium.launch(
-                headless=False,
+                headless=True,
                 args=[
                     "--disable-blink-features=AutomationControlled",
                     "--disable-dev-shm-usage",
