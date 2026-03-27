@@ -1763,7 +1763,7 @@ def run():
 
                 try:
                     for j, produto in enumerate(produtos, start=1):
-                        print(f"   -> Produto {j}/{len(produtos)}: {produto.get('produto_busca', produto.get('produto', 'SEM_NOME'))}")
+                        print(f"   -> Produto {j}/{len(produtos)}: {produto.get('produto_busca', produto.get('produto', 'SEM_NOME'))}[fix]")
 
                         try:
                             page = garantir_page_ativa(context, page)
