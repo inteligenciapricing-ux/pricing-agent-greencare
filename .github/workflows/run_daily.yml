@@ -26,4 +26,4 @@ jobs:
 
       - name: Run script
         run: |
-          python scripts/rodar_ciclo_completo.py
+          xvfb-run -a python scripts/rodar_ciclo_completo.py
