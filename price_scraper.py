@@ -1763,6 +1763,7 @@ def run():
 
                 try:
                     for j, produto in enumerate(produtos, start=1):
+                        print("DEBUG PRODUTO:", produto)
                         print(f"   -> Produto {j}/{len(produtos)}: {produto.get('produto_busca', produto.get('produto', 'SEM_NOME'))}[fix]")
 
                         try:
